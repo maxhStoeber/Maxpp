@@ -1,0 +1,19 @@
+.body {
+  width: calc(100% - 5rem);
+  height: 90vh;
+  margin-left: 5rem ;
+  z-index: 0;
+  position: relative;
+  top: 0;
+  transition: all 0.5s ease;
+  background-color: var(--gray-700);
+  padding: 2rem;
+}
+.body-md-screen{
+  width: calc(100% - 14.5625rem);
+  margin-left: 14.5625rem;
+}
+.body-collapsed{
+  width: calc(100% - 5rem - 2*2rem);
+  margin-left: 5rem;
+}

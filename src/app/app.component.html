@@ -1,11 +1,6 @@
 
-<app-navbar></app-navbar>
-<div class="container">
-  <div class="content">
-      <h1>404</h1>
-      <p>Page not found</p>
-  </div>
-</div>
-
-
-<router-outlet />
+<app-navbar (onToggleSidenav)="onToggleSideNav($event)"></app-navbar>
+<app-body
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+></app-body>
