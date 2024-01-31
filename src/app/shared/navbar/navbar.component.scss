@@ -1,5 +1,5 @@
 .sidenav{
-  background: var(--gray-700);
+  background: var(--gray-800);
   transition: all 0.5s ease;
   position: fixed;
   z-index: 1;
@@ -10,19 +10,25 @@
   .logo-container{
     display: flex;
     align-items: center;
-    padding: 0.938rem 0.938rem 0 0.938rem;
+    padding: 0.2rem 0.938rem 0 0.938rem;
     .logo{
       background: var(--gray-400);
       color: var(--gray-900);
       text-align: center;
       width: 3rem;
       min-width: 3rem;
-      border-radius: 0.313rem;
+      border-radius: 2rem;
       padding: 0.313rem;
       font-size: 24px;
       font-weight: 900;
       cursor: pointer;
       border: none;
+      box-shadow:  inset 0 0 0.5rem 0.1rem var(--gray-900);
+      .logo-img{
+        width: 100%;
+        height: 100%;
+
+      }
     }
     .logo-text{
       margin-left: 0.5rem;
@@ -59,7 +65,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 3.65rem);
+  height: calc(100% - 4.65rem);
   .sidenav-nav-item{
     width: 100%;
     padding-bottom: 0.5rem;
@@ -84,6 +90,11 @@
         overflow: hidden;
       }
     }
+
+  }
+  .sidenav-nav-item:nth-last-child(2) {
+    margin-top: auto;
+
   }
   .sidenav-nav-item:hover{
     .sidenav-nav-link{

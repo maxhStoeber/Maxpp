@@ -1,10 +1,9 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
   <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">M</button>
-    <div class="logo-text" *ngIf="!collapsed">Max QLT</div>
-    <button class="btn-close" *ngIf="!collapsed" (click)="closeSidenav()">
-      <i class="fas fa-times close-icon"></i>
+    <button class="logo" (click)="toggleCollapse()">
+      <img src="assets/images/MS_logo.png" alt="logo" class="logo-img" >
     </button>
+    <div class="logo-text" @fadeInOut *ngIf="!collapsed">Max St.</div>
   </div>
   <ul class="sidenav-nav">
     @for (element of navData; track element.label){
@@ -14,7 +13,7 @@
            [routerLinkActiveOptions]="{exact: true}"
         >
           <i class="sidenav-link-icon" [class]="element.icon" ></i>
-          <span class="sidenav-link-text" *ngIf="!collapsed">{{element.label}}</span>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">{{element.label}}</span>
         </a>
       </li>
     } @empty {

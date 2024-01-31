@@ -12,7 +12,7 @@ import {RouterOutlet} from "@angular/router";
 })
 export class BodyComponent {
 
-  @Input() collapsed = true;
+  @Input() collapsed = false;
   @Input() screenWidth = 0;
   getBodyClass() : string {
     let styleClass = '';
