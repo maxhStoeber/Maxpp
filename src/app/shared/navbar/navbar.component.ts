@@ -3,6 +3,8 @@ import {navbarData} from "./nav-data";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NgClass, NgIf} from "@angular/common";
 import {state, animate, style, transition, trigger, keyframes} from "@angular/animations";
+import {SublevelMenuComponent} from "./sublevel-menu.component";
+import {INavbarData} from "./helper";
 
 interface SideNavToggle {
   screenWidth: number;
@@ -15,7 +17,8 @@ interface SideNavToggle {
     RouterLink,
     NgIf,
     NgClass,
-    RouterLinkActive
+    RouterLinkActive,
+    SublevelMenuComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -47,6 +50,7 @@ export class NavbarComponent implements OnInit {
    collapsed = false;
    screenWidth= 0 ;
    navData = navbarData;
+   multiple: boolean = false;
 
    @HostListener('window:resize', ['$event'])
    onResize(event: any) {
@@ -64,8 +68,22 @@ export class NavbarComponent implements OnInit {
      this.collapsed = !this.collapsed;
      this.onToggleSidenav.emit({screenWidth: this.screenWidth, collapsed: this.collapsed});
    }
-  closeSidenav(): void {
+
+  // No X button ATM
+   closeSidenav(): void {
      this.collapsed = true;
       this.onToggleSidenav.emit({screenWidth: this.screenWidth, collapsed: this.collapsed});
+   }
+   handleClick(item: INavbarData): void {
+     if(this.multiple) {
+       if(item.items && item.items.length > 0) {
+         this.navData.forEach((modelItem: any) => {
+           if(modelItem !== item && modelItem.expanded) {
+             modelItem.expanded = false;
+           }
+         });
+       }
+     }
+     item.expanded = !item.expanded;
    }
 }

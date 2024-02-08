@@ -1,20 +1,42 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      <img src="assets/images/MS_logo.png" alt="logo" class="logo-img" >
+      <img src="assets/images/MS_logo.png" alt="logo" class="logo-img">
     </button>
     <div class="logo-text" @fadeInOut *ngIf="!collapsed">Max St.</div>
   </div>
   <ul class="sidenav-nav">
-    @for (element of navData; track element.label){
+    @for (element of navData; track element.label) {
       <li class="sidenav-nav-item">
-        <a href=" " class="sidenav-nav-link" [routerLink]="element.routelink"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact: true}"
-        >
-          <i class="sidenav-link-icon" [class]="element.icon" ></i>
-          <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">{{element.label}}</span>
+        <a class="sidenav-nav-link" (click)="handleClick(element)"
+           *ngIf="element.items && element.items.length >0">
+          <i class="sidenav-link-icon" [class]="element.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">{{ element.label }}</span>
+
+          <i class="menu-collapse-icon"
+             *ngIf="element.items && !collapsed"
+             [ngClass]="!element.expanded ? 'fa-solid fa-angle-right' : 'fa-solid fa-angle-down'"
+          ></i>
         </a>
+        <a
+          *ngIf="!element.items || element.items.length === 0"
+          class="sidenav-nav-link"
+          [routerLink]="element.routelink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <i class="sidenav-link-icon" [class]="element.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="!collapsed">{{ element.label }}</span>
+        </a>
+        <div *ngIf="!collapsed && element.items && element.items.length > 0">
+          <app-sublevel-menu
+            [data]="element"
+            [multiple]="multiple"
+            [collapsed]="collapsed"
+            [expanded]="element.expanded"
+          ></app-sublevel-menu>
+
+        </div>
       </li>
     } @empty {
       <p>TESTING</p>

@@ -1,4 +1,6 @@
-export const navbarData = [
+import {INavbarData} from "./helper";
+
+export const navbarData: INavbarData[] = [
   {
     routelink: 'home',
     icon: 'fa-solid fa-house',
@@ -7,7 +9,28 @@ export const navbarData = [
   {
     routelink: 'projects',
     icon: 'fa-solid fa-house',
-    label: 'Projects'
+    label: 'Projects',
+    items: [
+      {
+        routelink: 'projects/A',
+        label: 'A',
+        icon: 'fa-solid fa-toolbox',
+        items: [
+          {
+            routelink: 'projects/C',
+            label: 'C'
+          },
+          {
+            routelink: 'projects/D',
+            label: 'D'
+          }
+        ]
+      },
+      {
+        routelink: 'projects/B',
+        label: 'B'
+      }
+      ]
   },
   {
     routelink: 'tools',

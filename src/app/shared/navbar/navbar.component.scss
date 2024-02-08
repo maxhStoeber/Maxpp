@@ -4,7 +4,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  width: 14.5625rem;
+  width: 12rem;
   height: 100vh;
   box-shadow: 0.063rem 0 1.25rem 0 var(--gray-900);
   .logo-container{
@@ -101,6 +101,9 @@
       background-color: var(--gray-400);
       color: var(--gray-900);
     }
+    .menu-collapse-icon{
+      color: var(--gray-900);
+    }
   }
 }
 .active{
@@ -111,8 +114,50 @@
 }
 .active{
   background-color: white;
+  .menu-collapse-icon,
   .sidenav-link-icon,
   .sidenav-link-text{
     color: var(--gray-900);
+  }
+}
+.menu-collapse-icon{
+  font-size: 25px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: auto  0.5rem auto auto;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.sublevel-nav{
+  list-style: none;
+  margin-left:10px;
+  .sublevel-nav-item{
+    .sublevel-nav-link{
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.625rem;
+      transition: all 0.3s ease;
+      .sublevel-link-icon{
+        font-size: 4px;
+        width: 2rem;
+        min-width: 2rem;
+        margin: 0 0.5rem;
+        text-align: center;
+      }
+      .sublevel-link-text{
+        margin-left: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .sublevel-nav-link:hover{
+      background-color: var(--gray-400);
+      color: var(--gray-900);
+    }
   }
 }
